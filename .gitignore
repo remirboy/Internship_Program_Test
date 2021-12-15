@@ -1,4 +1,5 @@
 .DS_Store
 /obj
 /bin
-/.vs/Internship_Tests/
+/Internship_Tests/bin/
+/Internship_Tests/obj/
