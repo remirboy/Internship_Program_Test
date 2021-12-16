@@ -20,6 +20,8 @@ namespace Internship_Tests.Tests
 
             app.LoginHelper.Login(user);
 
+            Assert.AreEqual(true, app.StreamHelper.IsSuperUser());
+
             app.StreamHelper.CreateNewStream(user, stream);
 
             app.StreamHelper.SearchStreamByName(stream);
@@ -57,31 +59,12 @@ namespace Internship_Tests.Tests
 
             Assert.AreEqual(9, streams.Count);
 
-            //List<int> oldStreamsInternsNumber = app.StreamHelper.ConvertInternsNumberToInt();
-
-            //oldStreamsInternsNumber.Sort();
-
-            //Console.WriteLine(oldStreamsInternsNumber.Count);
-
-
-            //app.StreamHelper.SortStreamByInternsNumber();
-
-            //List<int> newStreamsInternsNumber = app.StreamHelper.ConvertInternsNumberToInt();
-
-            //Console.WriteLine(newStreamsInternsNumber.Count);
-
-            //Assert.AreEqual(oldStreamsInternsNumber, newStreamsInternsNumber);
-
-
             app.StreamHelper.SearchStreamByName(stream);
 
             Assert.AreEqual(true, app.StreamHelper.IsStreamFound(stream));
 
             app.StreamHelper.OpenStreamOptionsMenu("1").OpenStreamDetails(stream);
 
-            // when it will done need to check that stream name in open page is "hi" like created stream
-
-            //      app.StreamHelper.ClearSearchStreamByName();
         }
     }
 }

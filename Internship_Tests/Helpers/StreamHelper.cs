@@ -18,7 +18,6 @@ namespace Internship_Tests.Helpers
             MainPage mainPage = new MainPage(driver);
             StreamCreationModalWindow streamModalWindow = new StreamCreationModalWindow(driver);
 
-            Assert.AreEqual(IsSuperUser(mainPage), true);
             mainPage.ClickAddStreamButton();
             //It's need to add method of stream creation button click when it will be done
             InputNewStreamDetailsInfo(streamModalWindow, stream);
@@ -91,8 +90,7 @@ namespace Internship_Tests.Helpers
             return this;
         }
 
-        private List<Stream> streamList = null;
-        private List<int> streamsInternsNumberList = null;
+        private List<Stream> streamList;
 
         public List<Stream> GetStreamList()
         {
@@ -114,24 +112,13 @@ namespace Internship_Tests.Helpers
         public bool IsStreamFound(Stream stream)
         {
             MainPage mainPage = new MainPage(driver);
-            return mainPage.GetStreamsNames().Exists(x => x.Name.Contains(stream.Name));
-        }
-
-        public List<int> ConvertInternsNumberToInt()
-        {
-            streamsInternsNumberList = null;
-            streamsInternsNumberList = new List<int>();
-            ICollection<Stream> streams = GetStreamsInternsNumbersList();
-            foreach (Stream stream in streams)
-                streamsInternsNumberList.Add(stream.Interns);
-            return streamsInternsNumberList;
-        }
-
-        public List<Stream> GetStreamsInternsNumbersList()
-        {
-            MainPage mainPage = new MainPage(driver);
-            Console.WriteLine(mainPage.GetStreamsInternsNumber().GetType());
-            return mainPage.GetStreamsInternsNumber();
+            streamList = new List<Stream>();
+            ICollection<IWebElement>  elements = mainPage.GetStreamsNames();
+            foreach (IWebElement element in elements)
+            {
+                streamList.Add(new Stream(element.Text));
+            }
+            return streamList.Exists(x => x.Name.Contains(stream.Name));
         }
 
         public StreamHelper SortStreamByInternsNumber()
@@ -141,8 +128,9 @@ namespace Internship_Tests.Helpers
             return this;
         }
 
-        private bool IsSuperUser(MainPage mainPage)
+        public bool IsSuperUser()
         {
+            MainPage mainPage = new MainPage(driver);
             mainPage.WaitShowElement(mainPage.AddStreamButton);
             return mainPage.IsElementPresent(mainPage.AddStreamButton);
         }

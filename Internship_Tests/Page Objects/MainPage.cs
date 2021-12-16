@@ -118,34 +118,17 @@ namespace Internship_Tests.PageObjects
             return this;
         }
 
-        public List<Stream> GetStreamsNames()
+        public ICollection<IWebElement> GetStreamsNames()
         {
            return GetStreamsAttribute(streamNamesList);
         }
 
-        public List<Stream> GetStreamsInternsNumber()
-        {
-            List<Stream> streamList = new List<Stream>();
-            ICollection<IWebElement> elements = driver.FindElements(streamInternsNumberList);
-            foreach (IWebElement element in elements)
-            {
-                Stream stream = new Stream();
-                stream.Interns = int.Parse(element.Text); 
-                streamList.Add(stream);
-            }
-            return streamList;
-        }
 
-
-        public List<Stream> GetStreamsAttribute(By locator)
+        public ICollection<IWebElement> GetStreamsAttribute(By locator)
         {
             List<Stream> streamList = new List<Stream>();
             ICollection<IWebElement> elements = driver.FindElements(locator);
-            foreach (IWebElement element in elements)
-            {
-                streamList.Add(new Stream(element.Text));
-            }
-            return streamList;
+            return elements;
         }
 
         public MainPage ChooseStreamListSize(string count)
