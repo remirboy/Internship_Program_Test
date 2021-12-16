@@ -13,9 +13,10 @@ public class RegistrationformtestTest : BaseTest
     {
 
         // Only numbers, non valid
-        User user = new User("John", "Snow", "wasd3@yandex.ru", "123456");
+        User user = new User("John", "Snow", "was3@yandex.ru", "123456");
 
         app.LoginHelper.MoveToRegistrationForm();
+                Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
 
         app.LoginHelper.Registrate(user);
 
@@ -23,73 +24,49 @@ public class RegistrationformtestTest : BaseTest
         user.Password = "THEUSR";
         app.LoginHelper.Registrate(user);
 
+        Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
 
         // Only small litaries, non valid
         user.Password = "theusr";
         app.LoginHelper.Registrate(user);
 
+        Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
 
         // Only big and small litaries, non valid
         user.Password = "Theusr";
         app.LoginHelper.Registrate(user);
 
+        Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
+
         // Only numbers and small litaries, non valid
         user.Password = "theus1";
         app.LoginHelper.Registrate(user);
+
+        Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
+
 
         // Only numbers and big litaries, non valid
         user.Password = "THEUS2";
         app.LoginHelper.Registrate(user);
 
-        //Thread.Sleep(1000);
-        //// Length is less then 6, non valid
-        //user.Password = "Theu1";
-        //app.LoginHelper.Registrate(user);
+        Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
 
-        //Thread.Sleep(1000);
+        //// Length is less then 6, non valid
+        user.Password = "Theu1";
+        app.LoginHelper.Registrate(user);
+
+        Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
 
         //// Length is more or equals 6, there is at least one number, big and small litary, valid
-        //user.Password = "Theu3s";
-        //app.LoginHelper.Registrate(user);
-        //Thread.Sleep(2000);
+        user.Password = "Theu3s";
+        app.LoginHelper.Registrate(user);
 
+        Assert.AreEqual(true, app.LoginHelper.IsUserCredentialsIsValid());
 
         app.LoginHelper.MoveToLoginForm();
 
         app.LoginHelper.Login(user);
-        Thread.Sleep(4000);
-        Assert.AreEqual(user.FirstName + " " + user.LastName, app.StreamHelper.GetUserName());
 
-
-
-
-        //driver.Navigate().GoToUrl("http://akvelon-proj.herokuapp.com/Auth/Login");
-        //driver.Manage().Window.Size = new System.Drawing.Size(1440, 900);
-        //driver.FindElement(By.LinkText("Sign Up")).Click();
-        //driver.FindElement(By.Name("firstName")).Click();
-        //driver.FindElement(By.Name("firstName")).SendKeys("remir");
-        //driver.FindElement(By.Name("lastName")).Click();
-        //driver.FindElement(By.Name("lastName")).SendKeys("ziyatdinov");
-        //driver.FindElement(By.Name("email")).Click();
-        //driver.FindElement(By.Name("email")).SendKeys("rem@");
-        //driver.FindElement(By.Name("password")).Click();
-        //driver.FindElement(By.Name("password")).SendKeys("123456");
-        //driver.FindElement(By.Name("confirmPassword")).Click();
-        //driver.FindElement(By.Name("confirmPassword")).SendKeys("123456");
-        //driver.FindElement(By.CssSelector(".AuthButton_button__2ukbQ")).Click();
-        //driver.FindElement(By.Name("email")).Click();
-        //driver.FindElement(By.Name("email")).Click();
-        //driver.FindElement(By.Name("email")).SendKeys("rem@yandex.ru");
-        //driver.FindElement(By.CssSelector(".AuthButton_button__2ukbQ")).Click();
-        //driver.FindElement(By.CssSelector(".AuthButton_button__2ukbQ")).Click();
-        //driver.FindElement(By.CssSelector(".AuthButton_button__2ukbQ")).Click();
-        //driver.FindElement(By.CssSelector(".AuthButton_button__2ukbQ")).Click();
-        //driver.FindElement(By.Name("password")).Click();
-        //driver.FindElement(By.Name("password")).SendKeys("The");
-        //driver.FindElement(By.Id("root")).Click();
-        //driver.FindElement(By.CssSelector("html")).Click();
-        //driver.FindElement(By.CssSelector("html")).Click();
-        //driver.FindElement(By.Id("root")).Click();
-        //driver.FindElement(By.CssSelector("html")).Click();
+        Assert.AreEqual(user.FirstName + " " + user.LastName, app.StreamHelper.GetUserName());     
     }
 }

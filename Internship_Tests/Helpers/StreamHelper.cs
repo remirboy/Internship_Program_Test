@@ -107,6 +107,7 @@ namespace Internship_Tests.Helpers
         public string GetUserName()
         {
             MainPage mainPage = new MainPage(driver);
+            mainPage.WaitShowElement(mainPage.UserFirstNameAndLastNameTitle);
             return mainPage.GetUserFirstNameAndLastNameTitle().Text;
         }
 

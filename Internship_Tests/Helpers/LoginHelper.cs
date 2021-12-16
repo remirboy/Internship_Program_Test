@@ -92,8 +92,10 @@ namespace Internship_Tests.Helpers
             loginModule.ClickSignUpTab();
         }
 
-        private bool IsUserCredentialsIsValid(SignUpPage signUpPage)
+        public bool IsUserCredentialsIsValid()
         {
+            SignUpPage signUpPage = new SignUpPage(driver);
+            signUpPage.WaitShowElement(signUpPage.RegistrationMessageError);
             if (signUpPage.IsElementPresent(signUpPage.RegistrationMessageError))
                 return false;
             else

@@ -30,6 +30,18 @@ namespace Internship_Tests.PageObjects
             }
         }
 
+        public By UserFirstNameAndLastNameTitle
+        {
+            get
+            {
+                return userFirstNameAndLastNameTitle;
+            }
+            set
+            {
+                userFirstNameAndLastNameTitle = value;
+            }
+        }
+
         public By StreamSearchInput
         {
             get
