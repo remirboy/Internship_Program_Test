@@ -68,5 +68,11 @@ namespace Internship_Tests.PageObjects
             driver.FindElement(signUpButton).Click();
             return this;
         }
+
+        public string GetRegistrationErrorMessage()
+        {
+            IWebElement registrationMessageErrorText = driver.FindElement(registrationMessageError);
+            return registrationMessageErrorText.Text;
+        }
     }
 }

@@ -96,7 +96,7 @@ namespace Internship_Tests.Helpers
         {
             SignUpPage signUpPage = new SignUpPage(driver);
             signUpPage.WaitShowElement(signUpPage.RegistrationMessageError);
-            if (signUpPage.IsElementPresent(signUpPage.RegistrationMessageError))
+            if (signUpPage.GetRegistrationErrorMessage().Equals("Failed to sign up. Incorrect input data"))
                 return false;
             else
                 return true;

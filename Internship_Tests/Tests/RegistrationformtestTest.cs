@@ -13,10 +13,10 @@ public class RegistrationformtestTest : BaseTest
     {
 
         // Only numbers, non valid
-        User user = new User("John", "Snow", "was3@yandex.ru", "123456");
+        User user = new User("John", "Snow", "remirboyziatdinov2@yandex.ru", "123456");
 
         app.LoginHelper.MoveToRegistrationForm();
-                Assert.AreEqual(false, app.LoginHelper.IsUserCredentialsIsValid());
+
 
         app.LoginHelper.Registrate(user);
 
