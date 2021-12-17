@@ -19,6 +19,12 @@ namespace Internship_Tests.Helpers
             SignUpCredentialsInput(user, signUpPage).RegistrationSubmit(signUpPage);
         }
 
+        public void RegistrateWithoutPassword(User user)
+        {
+            SignUpPage signUpPage = new SignUpPage(driver);
+            SignUpCredentialsInputWithoutPassword(user, signUpPage).RegistrationSubmit(signUpPage);
+        }
+
         public void Login(User user)
         {
             SignInPage signInPage = new SignInPage(driver);
@@ -52,6 +58,15 @@ namespace Internship_Tests.Helpers
                 TypeEmail(user.Email).
                 TypePassword(user.Password).
                 TypePasswordConfirm(user.Password);
+            return this;
+        }
+
+
+        private LoginHelper SignUpCredentialsInputWithoutPassword(User user, SignUpPage signUpPage)
+        {
+            signUpPage.TypeFirstName(user.FirstName).
+                TypeLastName(user.LastName).
+                TypeEmail(user.Email);
             return this;
         }
 

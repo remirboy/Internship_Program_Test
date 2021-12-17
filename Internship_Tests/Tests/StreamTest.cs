@@ -47,6 +47,8 @@ namespace Internship_Tests.Tests
 
             app.LoginHelper.Login(user);
 
+            //Assert.AreEqual(false, app.StreamHelper.IsSuperUser());
+
             app.StreamHelper.ChangeStreamListSize("5");
 
             List<Stream> streams = app.StreamHelper.GetStreamList();

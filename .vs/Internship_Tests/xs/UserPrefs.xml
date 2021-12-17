@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{8D918B1E-7E5F-4263-9521-6C165E850C04}|Default">
   <MonoDevelop.Ide.ItemProperties.Internship__Tests PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Internship_Tests/Tests/StreamTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Internship_Tests/Tests/RegistrationformtestTest.cs">
     <Files>
-      <File FileName="Internship_Tests/Page Objects/MainPage.cs" Line="137" Column="12" />
+      <File FileName="Internship_Tests/Page Objects/MainPage.cs" Line="125" Column="1" />
       <File FileName="Internship_Tests/Helpers/LoginHelper.cs" />
-      <File FileName="Internship_Tests/Helpers/StreamHelper.cs" />
-      <File FileName="Internship_Tests/Tests/StreamTest.cs" Line="14" Column="27" />
+      <File FileName="Internship_Tests/Helpers/StreamHelper.cs" Line="140" Column="2" />
+      <File FileName="Internship_Tests/Tests/StreamTest.cs" Line="23" Column="13" />
       <File FileName="Internship_Tests/Helpers/BaseHelper.cs" />
       <File FileName="Internship_Tests/Page Objects/StreamOptionsMenu.cs" />
       <File FileName="Internship_Tests/Page Objects/SignInPage.cs" />
       <File FileName="Internship_Tests/Page Objects/SignUpPage.cs" />
       <File FileName="Internship_Tests/Page Objects/StreamCreationModalWindow.cs" />
       <File FileName="Internship_Tests/Page Objects/StreamPage.cs" />
+      <File FileName="Internship_Tests/Tests/RegistrationformtestTest.cs" Line="40" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,9 +20,8 @@
           <Node name="Internship_Tests" expanded="True">
             <Node name="Internship_Tests" expanded="True">
               <Node name="Helpers" expanded="True" />
-              <Node name="Page Objects" expanded="True" />
               <Node name="Tests" expanded="True">
-                <Node name="StreamTest.cs" selected="True" />
+                <Node name="RegistrationformtestTest.cs" selected="True" />
               </Node>
             </Node>
           </Node>
